@@ -191,7 +191,8 @@
                  :key="index" @click="set_day(item)">
                 <div class="flex-item minitxt"
                      :class="{month: item.shengx.slice(-2) == '初一', solarterm: item.jq != ''}">
-                    {{item.shengx.slice(-2) == '初一' ? item.shengx.slice(-4, -2) : (item.jq ? item.jq : item.shengx.slice(-2))}}
+                    {{item.shengx.slice(-2) == '初一' ? item.shengx.slice(-4, -2) : (item.jq ? item.jq :
+                    item.shengx.slice(-2))}}
                 </div>
                 <div class="flex-item bold"
                      :class="{select: item.day == day && item.mouth == month, weekend: item.week == 0 || item.week == 6}">
@@ -316,7 +317,7 @@
                 this.init_time()
             }, init_month() {
                 that = this
-                axios.post('http://zydx.win/wnlAPI.php', "ID=1&year=" + this.year + "&month=" + this.month).then(function (response) {
+                axios.post('https://zydx.win/wnlAPI.php', "ID=1&year=" + this.year + "&month=" + this.month).then(function (response) {
                     calendar = [[], [], [], [], [], []]
                     response.data.forEach(function (item, i) {
                         calendar[Math.floor(i / 7)].push(item)
@@ -341,7 +342,7 @@
                     '酉': '17',
                     '戌': '19',
                     '亥': '21'
-                }, axios.post('http://zydx.win/wnlAPI.php', "ID=2&year=" + this.year + "&month=" + this.month + "&day=" + this.day + "&hour=" + hour[this.time] + '&minute=1').then(function (response) {
+                }, axios.post('https://zydx.win/wnlAPI.php', "ID=2&year=" + this.year + "&month=" + this.month + "&day=" + this.day + "&hour=" + hour[this.time] + '&minute=1').then(function (response) {
                     that.eightCharacter = response.data
                 })
             }
@@ -371,6 +372,7 @@
             this.init_month()
         },
     })
+
 </script>
 </body>
 </html>
